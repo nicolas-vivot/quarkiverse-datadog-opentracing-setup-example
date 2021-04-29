@@ -3,6 +3,7 @@ quarkus:
     name: quarkus-datadog-opentracing-example
   shutdown:
     timeout: 5s
+  # For non development modes, activate json formatting
   log:
     console:
       json: 
@@ -13,6 +14,8 @@ quarkus:
     enabled: false
 
 # Example of datadog configuration properties
+# You can of course configured it based on your own environment variables
+# or directly setup the environment variable matching these properties
 dd:
   service: quarkus-datadog-opentracing-example
   trace:
@@ -23,9 +26,11 @@ dd:
 "%dev":
   quarkus:
     log:
+      # For dev, show datadog debug logs. Easier to figure any misconfiguration
       category:
         "datadog":
           level: DEBUG
+      # For dev, you can keep non json formatting
       console:
         json: false
         format: "%d{HH:mm:ss} %-5p dd.trace_id=%X{dd.trace_id}, dd.span_id=%X{dd.span_id}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
