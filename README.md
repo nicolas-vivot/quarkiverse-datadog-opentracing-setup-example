@@ -1,6 +1,6 @@
 # quarkiverse-datadog-opentracing-setup-example
 
-This repository demonstrate how to use the Quarkus Datadog Opentracing extension
+This repository demonstrate how to use the [Quarkus Datadog Opentracing extension](https://github.com/quarkiverse/quarkus-datadog-opentracing)
 
 It exposes a simple REST resource and service to demonstrate the following features:
 - smallrye-opentracing
