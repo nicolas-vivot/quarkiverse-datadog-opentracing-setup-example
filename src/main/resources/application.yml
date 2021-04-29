@@ -1,0 +1,31 @@
+quarkus:
+  application:
+    name: quarkus-datadog-opentracing-example
+  shutdown:
+    timeout: 5s
+  log:
+    console:
+      json: 
+        additional-field:
+          service:
+            value: quarkus-datadog-opentracing-example
+  jaeger:
+    enabled: false
+
+# Example of datadog configuration properties
+dd:
+  service: quarkus-datadog-opentracing-example
+  trace:
+    header:
+      tags: "poweredby:quarkus,applicationType:demo"
+
+# Development profile
+"%dev":
+  quarkus:
+    log:
+      category:
+        "datadog":
+          level: DEBUG
+      console:
+        json: false
+        format: "%d{HH:mm:ss} %-5p dd.trace_id=%X{dd.trace_id}, dd.span_id=%X{dd.span_id}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
